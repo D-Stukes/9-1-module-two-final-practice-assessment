@@ -1,0 +1,41 @@
+body{
+
+background-color: bisque;
+font-size: Verdana;
+margin: auto 0;
+padding: 0px;
+box-sizing: border-box;
+
+
+}
+header{
+    margin: auto;
+    height: 150px;
+    width: 100%;
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255)
+}
+
+img{
+    border-radius: 50% 50%;
+    height: 100px;
+    width: 100px;
+
+}
+
+img{
+    display: block;
+    margin: 0 auto;
+}
+
+h1{
+    text-align: center;
+}
+hr{
+    width: 50%;
+    display: block;
+    margin: 0 auto
+}
+h4{
+    font-style: italic;
+}

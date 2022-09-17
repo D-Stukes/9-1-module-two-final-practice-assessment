@@ -1,0 +1,19 @@
+{
+  "name": "9-1-module-two-final-practice-assessment",
+  "version": "1.0.0",
+  "description": "This challenge is designed to assess the HTML, CSS, and JavaScript skills you have gained so far.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/D-Stukes/9-1-module-two-final-practice-assessment.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/D-Stukes/9-1-module-two-final-practice-assessment/issues"
+  },
+  "homepage": "https://github.com/D-Stukes/9-1-module-two-final-practice-assessment#readme"
+}
