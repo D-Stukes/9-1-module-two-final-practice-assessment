@@ -25,9 +25,12 @@ const getPeople = (paramName) => {
 
    //captures selected value (name) and then extract name, id, age, eye color and hair color values from data (array of objects)
     selectAPerson.addEventListener('change', () => {
+        if(document.querySelector(".err1")){
+            document.querySelector(".err1").remove() 
+        }
         const thisSelection = `${selectAPerson.value}`
-        console.log("this selection = ", thisSelection)
-  
+        //console.log("this selection = ", thisSelection)
+
 
         const index = data.findIndex(person => person.name === thisSelection);
         // console.log(index)
@@ -56,33 +59,69 @@ const getPeople = (paramName) => {
         addInfo.innerHTML = ""
         addInfo.append(headerInfo, pInfo1, pInfo2, pInfo3)
 
-        const shoutOutForm = document.querySelector('.shoutout_Form') //ul for shoutout
-        const shoutList = document.querySelector('.shoutList') //ul for shoutout line items in html doc
-        let goodName =data[index].name + ": "
-        let shoutLi = document.createElement('li')   //li tag for shoutout text
-        const strongName = document.createElement('strong')
-        const strongTextNode = document.createTextNode(goodName);
-        
+  
+
+    })  //end of event listener that is listening for changes in the Select element 
+
+
+        //***   add event listener to shoutOutForm ****
+        const shoutOutForm = document.querySelector('.shoutout_Form') //form for shoutout
+
         shoutOutForm.addEventListener(('submit'), (event) => {
         event.preventDefault()
+        if(document.querySelector(".err2")){
+            document.querySelector(".err2").remove() 
+        }
         const thisShoutOut = event.target.shoutout.value
-        //console.log("thisShoutOut = ", thisShoutOut)
+        const addPersonSection = document.querySelector('.addPerson_section')
+        const shoutOutSection= document.querySelector('.shoutOuts_section')
+        
+        
+        if(selectAPerson.value === "") {
+            let msgNoneSelected = document.createElement('p')
+            msgNoneSelected.innerHTML = "Please Select a Person"
+            msgNoneSelected.setAttribute("style","font-size: 13px; color: red")
+            msgNoneSelected.classList.add('err1')
+            addPersonSection.append(msgNoneSelected)
+
+        }
+        if(thisShoutOut === "") {
+            let msgNothingEntered = document.createElement('p')
+            msgNothingEntered.innerHTML = `Please add a shoutout for ${selectAPerson.value}`
+            msgNothingEntered.setAttribute ("style","font-size: 13px; color: red")
+            addPersonSection.append(msgNothingEntered)
+            msgNothingEntered.classList.add('err2')
+        } else {
+        
+              //Select shoutOutForm, create Li element, assign value of selected name to variable goodName
+        //Create strong element, and textNote to apply to goodName
+        const shoutList = document.querySelector('.shoutList') //ul for shoutout line items in html doc
+        let shoutLi = document.createElement('li')   //li tag for shoutout text
+       
+        let goodName = selectAPerson.value + ": "
+        // const strongName = document.createElement('strong')
+        // const strongTextNode = document.createTextNode(goodName);
+        // strongName.appendChild(strongTextNode)
+        // shoutList.appendChild(strongName)
+
+           //console.log("thisShoutOut = ", thisShoutOut)
         // let goodName = data[index].name
-        strongName.appendChild(strongTextNode)
+        shoutLi.innerHTML = `<strong>${goodName}</strong> ${thisShoutOut}`
         // console.log ('goodName = ', goodName)
-        shoutList.appendChild(strongName)
-
-    //     var x = document.createElement("STRONG");
-    //     var t = document.createTextNode("Some strong text");
-    //     x.appendChild(t);
-    //     document.body.appendChild(x);
-    //   
-        shoutLi.textContent = thisShoutOut
         shoutList.append(shoutLi)
+        }
+
+        const resetButton = document.createElement('button')
+        resetButton.setAttribute("id", "#reset-shoutouts");
+        resetButton.setAttribute("text", "Remove Shoutouts");
+        resetButton.addEventListener((submit) => {
+            shoutLi.innerHTML = ""
+        shoutList.append(resetButton)
         })
+        
+     })
 
 
-    })  //end of event listener that is listening for changes in the Select element           
 
  })  // end of 2nd .then promise statement
 

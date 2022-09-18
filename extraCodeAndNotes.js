@@ -18,7 +18,9 @@
 
     
 
+ // shoutLi.innerHTML = `<strong>${goodName}</strong> `
 
+ 
     // const selectedPerson = data.find(person => person.name === paramName);
 
 
