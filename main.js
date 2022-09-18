@@ -6,7 +6,7 @@
 
 
 const getPeople = (paramName) => {
-    let url = 'https://ghibliapi.herokuapp.com/people'
+    let url = `https://ghibliapi.herokuapp.com/people`
     fetch(url)
     .then((response) => response.json())
     .then((data) => {
@@ -15,44 +15,41 @@ const getPeople = (paramName) => {
 
     //Populate the option values in the Select drop down list
     const selectAPerson = document.querySelector('.selectAPerson')
-    
-    
     for(oneData of data){
-    let option = document.createElement('option')
-    option.textContent = oneData.name
-    option.value = oneData.name
+        let option = document.createElement('option')
+        option.textContent = oneData.name
+        option.value = oneData.name
+        option.id = oneData.id
     selectAPerson.append(option)
     }
 
+   //captures selected value (name) and then extract name, id, age, eye color and hair color values from data (array of objects)
     selectAPerson.addEventListener('change', () => {
         const thisSelection = `${selectAPerson.value}`
         console.log("this selection = ", thisSelection)
-
-        
     })
 
-    // const addInfoSection = document.querySelector('.addInfo_section')
-    // let pInfo1 = document.createElement('p')
-    // pInfo1.textContent = 
-    // let pInfo2 = document.createElement('p')
-    // let pInfo3 = document.createElement('p')
-    // addInfoSection
+    const index = data.findIndex(person => person.name === "Haku");
+    console.log(index)
+    console.log(data[index].name)
+    console.log(data[index].id)
+    console.log(data[index].age)
+    console.log(data[index].eye_color)
+    console.log(data[index].hair_color)
 
-    
-
-
-    // const selectedPerson = data.find(person => person.name === paramName);
-
-
-    })
-
+ })  // end of 2nd .then
 
 .catch((error) => console.log(error))
 
-}
 
-getPeople()
- //Populate the option values in the Select drop down list
+}  // end of fetch call
+
+getPeople()  //calling the getPeople function that contains the fetch call
+
+
+
+
+     //Populate the option values in the Select drop down list
 //  const selectAPerson = document.querySelector('.selectAPerson')
  
 // let thisOption = document.querySelector('.this_option')
@@ -69,7 +66,35 @@ getPeople()
 //     console.log("namePick = ", namePick)
 // })
 
+// const selectAPerson = document.querySelector('.selectAPerson')
+// let url = `https://ghibliapi.herokuapp.com/people`
 
+// selectAPerson.addEventListener('change', () => {
+//     const thisSelection = `${selectAPerson.value}`
+//     console.log("this selection = ", thisSelection)
+
+
+// })
+// selectAPerson.addEventListener('change', () => {
+//     const thisSelection = `${selectAPerson.name}`
+//     const thisID = thisSelection
+//     console.log("this selection = ", thisSelection)
+//     // fetch(`${url}/${thisID}`)
+    // .then((response) => response.json())
+    // .then((data2) => {
+    //     console.log(data2)
+    //     // function getNameInfo(data2) {
+    //     //     return data2.find(({name}) => name === `${thisSelection}`)
+    //     //   }
+          
+    // })
+
+    // .catch((error) => console.log(error))
+// })
+// function findPinkElephantsByTimestreet(songs) {
+//     return exampleSongData.find(({title}) => title === "Pink Elephants")
+//   }
+  
 
 
 
@@ -98,3 +123,26 @@ getPeople()
     // console.log("name data", name)
     // console.log(fetchPeople())
 
+
+
+            // const addInfoSection = document.querySelector('.addInfo_section')
+            //     const pInfo1 = document.createElement('p')
+            //     pInfo1.textContent = data[index].age
+            //     addInfoSection.append(pInfo1)
+            //     const pInfo2 = document.createElement('p')
+            //     pInfo2.textContent = data[index].eye_color
+            //     addInfoSection.append(pInfo2)
+            //     const pInfo3 = document.createElement('p')
+            //     pInfo1.textContent = data[index].hair_color
+            //     addInfoSection.append(pInfo3)
+                
+            
+            //  return ((url) => fetch(url/thisIndex))
+            //  .then((response) => response.json())
+            //  .then((data2) => {
+            //   console.log("data2 = ", data2)
+        // })
+
+
+  
+ 
