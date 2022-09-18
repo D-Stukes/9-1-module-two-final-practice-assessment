@@ -25,6 +25,7 @@ const getPeople = (paramName) => {
 
    //captures selected value (name) and then extract name, id, age, eye color and hair color values from data (array of objects)
     selectAPerson.addEventListener('change', () => {
+
         if(document.querySelector(".err1")){
             document.querySelector(".err1").remove() 
         }
@@ -111,17 +112,30 @@ const getPeople = (paramName) => {
         shoutList.append(shoutLi)
         }
 
-        const resetButton = document.createElement('button')
-        resetButton.setAttribute("id", "#reset-shoutouts");
-        resetButton.setAttribute("text", "Remove Shoutouts");
-        resetButton.addEventListener((submit) => {
-            shoutLi.innerHTML = ""
-        shoutList.append(resetButton)
-        })
         
+
+        // resetButton.setAttribute("id", "#reset-shoutouts");
+        // resetButton.type = "submit"
+        // resetButton.innerText = "Remove Shoutouts";
+        // <resetButton.innerHTML = `<input type="reset" value="Reset"/>`
+        // <input type="submit" value="Submit"></input>
+  
      })
+    const addPersonSection = document.querySelector('.addPerson_section')
+     const shoutList = document.querySelector('.shoutList') 
+     const resetButton = document.createElement('button')
 
-
+     resetButton.setAttribute('id', 'reset-shoutouts')
+     resetButton.type = "submit"
+     resetButton.innerText = "Remove Shoutouts";
+     resetButton.style.marginLeft = "34em"
+     addPersonSection.append(resetButton)
+     
+     resetButton.addEventListener(('click'), (event) => {
+        shoutList.remove()
+       
+    })
+    
 
  })  // end of 2nd .then promise statement
 
